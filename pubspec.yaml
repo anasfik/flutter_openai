@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   dart_openai: ^1.2.3
+  meta: ^1.8.0
 
 dev_dependencies:
   flutter_test:
