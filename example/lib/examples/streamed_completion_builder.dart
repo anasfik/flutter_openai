@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_openai/flutter_openai.dart';
 
-class CompletionBuilderExample extends StatelessWidget {
-  const CompletionBuilderExample({super.key});
+class StreamedCompletionBuilderExample extends StatelessWidget {
+  const StreamedCompletionBuilderExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return OpenAICompletionBuilder(
+    return OpenAIStreamedCompletionBuilder(
       model: "text-davinci-003",
-      prompt: "OpenAI ",
+      prompt: "OpenAI is a",
+      maxTokens: 50,
       shouldRebuildOnConfigChanged: true,
-      onSuccessBuilder: (BuildContext context, OpenAICompletionModel model) {
+      onSuccessBuilder: (
+        BuildContext context,
+        OpenAIStreamCompletionModel model,
+      ) {
+        print(model.choices.first.text);
         return Text(model.choices.first.text);
       },
       onLoadingBuilder: (context) {

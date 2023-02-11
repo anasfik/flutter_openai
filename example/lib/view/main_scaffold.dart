@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../examples/completion_builder.dart';
 import '../examples/model_builder.dart';
 import '../examples/models_builder.dart';
+import '../examples/streamed_completion_builder.dart';
 import '../models/screen_entity.dart';
 
 class MainScaffold extends StatefulWidget {
@@ -27,6 +28,10 @@ class _MainScaffoldState extends State<MainScaffold> {
     const ScreenEntity(
       screen: CompletionBuilderExample(),
       title: 'Completion Builder Widget',
+    ),
+    const ScreenEntity(
+      screen: StreamedCompletionBuilderExample(),
+      title: 'Streamed Completion Builder Widget',
     ),
   ];
 
