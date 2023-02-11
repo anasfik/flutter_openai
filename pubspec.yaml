@@ -1,5 +1,7 @@
 name: flutter_openai
-description: A new Flutter package project.
+description: Integrate OpenAI APIs ( GPT, Dall-E.. ) quickly and easily inside your Flutter application
+homepage: https://github.com/anasfik/flutter_openai
+
 version: 0.2.0
 
 environment:
