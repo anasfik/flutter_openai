@@ -1,8 +1,8 @@
 import 'package:dart_openai/openai.dart';
 import 'package:flutter/material.dart';
 
-class ModerationBuilder extends StatefulWidget {
-  const ModerationBuilder({
+class OpenAIModerationBuilder extends StatefulWidget {
+  const OpenAIModerationBuilder({
     super.key,
     required this.input,
     required this.onSuccessBuilder,
@@ -20,10 +20,11 @@ class ModerationBuilder extends StatefulWidget {
   final String input;
   final String? model;
   @override
-  State<ModerationBuilder> createState() => _ModerationBuilderState();
+  State<OpenAIModerationBuilder> createState() =>
+      _OpenAIModerationBuilderState();
 }
 
-class _ModerationBuilderState extends State<ModerationBuilder> {
+class _OpenAIModerationBuilderState extends State<OpenAIModerationBuilder> {
   late Future<OpenAIModerationModel> future;
 
   @override
@@ -36,7 +37,7 @@ class _ModerationBuilderState extends State<ModerationBuilder> {
   }
 
   @override
-  void didUpdateWidget(covariant ModerationBuilder oldWidget) {
+  void didUpdateWidget(covariant OpenAIModerationBuilder oldWidget) {
     if (widget.input != oldWidget.input || widget.model != oldWidget.model) {
       if (widget.shouldRebuildOnConfigChanged) {
         future = OpenAI.instance.moderation.create(

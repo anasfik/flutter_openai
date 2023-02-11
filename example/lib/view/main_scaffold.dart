@@ -5,6 +5,7 @@ import '../examples/edit_builder.dart';
 import '../examples/embedding_builder.dart';
 import '../examples/model_builder.dart';
 import '../examples/models_builder.dart';
+import '../examples/moderation_builder.dart';
 import '../examples/streamed_completion_builder.dart';
 import '../models/screen_entity.dart';
 
@@ -42,6 +43,10 @@ class _MainScaffoldState extends State<MainScaffold> {
     const ScreenEntity(
       screen: EmbeddingsBuilderExample(),
       title: 'Embeddings Builder Widget',
+    ),
+    const ScreenEntity(
+      screen: ModerationBuilderExample(),
+      title: 'Moderation Builder Widget',
     ),
   ];
 
