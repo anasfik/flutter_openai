@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_openai/flutter_openai.dart';
 
+import '../base/future_builder.dart';
+
 class OpenAIModelsBuilder extends StatelessWidget {
   const OpenAIModelsBuilder({
     super.key,
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
     required this.onLoadingBuilder,
+    this.shouldRebuildOnStateChange = false,
   });
 
   final Widget Function(BuildContext context, List<OpenAIModelModel> models)
       onSuccessBuilder;
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
-
+  final bool shouldRebuildOnStateChange;
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<OpenAIModelModel>>(
+    return CustomFutureBuilder<List<OpenAIModelModel>>(
       future: OpenAI.instance.model.list(),
       builder: (
         BuildContext context,
