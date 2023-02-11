@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_openai/flutter_openai.dart';
 
-class ModelsBuilderExample extends StatefulWidget {
+class ModelsBuilderExample extends StatelessWidget {
   const ModelsBuilderExample({
     super.key,
   });
 
   @override
-  State<ModelsBuilderExample> createState() => _ModelsBuilderExampleState();
-}
-
-class _ModelsBuilderExampleState extends State<ModelsBuilderExample> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 90,
-        centerTitle: true,
-        backgroundColor: Colors.black,
-        title: const Text('Models Builder Example'),
-      ),
       body: OpenAIModelsBuilder(
-        onSuccessBuilder: (context, models) {
+        onSuccessBuilder:
+            (BuildContext context, List<OpenAIModelModel> models) {
           return ListView.builder(
             itemCount: models.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (BuildContext context, int index) {
               final OpenAIModelModel model = models[index];
 
               return ListTile(
-                title: Text(model.id),
-                subtitle: Text(model.permission.first.created.toString()),
+                tileColor: index % 2 == 0 ? Colors.grey[300] : Colors.white,
+                onTap: () {},
+                title: Text(
+                  model.id,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                subtitle: Text(
+                  model.permission.first.created.toString(),
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
               );
             },
           );
