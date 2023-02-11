@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../examples/completion_builder.dart';
 import '../examples/model_builder.dart';
 import '../examples/models_builder.dart';
 import '../models/screen_entity.dart';
@@ -22,6 +23,10 @@ class _MainScaffoldState extends State<MainScaffold> {
     const ScreenEntity(
       title: 'Single Model Builder Widget',
       screen: OpenAIModelBuilderExample(),
+    ),
+    const ScreenEntity(
+      screen: CompletionBuilderExample(),
+      title: 'Completion Builder Widget',
     ),
   ];
 
@@ -57,7 +62,7 @@ class _MainScaffoldState extends State<MainScaffold> {
         centerTitle: true,
         title: Text(current.title),
       ),
-      body: current.screen,
+      body: Center(child: current.screen),
     );
   }
 }

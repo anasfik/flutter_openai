@@ -10,6 +10,7 @@ class ModelsBuilderExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: OpenAIModelsBuilder(
+        shouldRebuildOnConfigChanged: false,
         onSuccessBuilder:
             (BuildContext context, List<OpenAIModelModel> models) {
           return ListView.builder(
