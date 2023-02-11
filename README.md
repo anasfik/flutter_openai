@@ -1,39 +1,44 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter OpenAI
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+<img src="https://imgur.com/boyievv.png" />
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+This is an open-source Flutter package that leverages the use of [dart_openai](https://www.pub.dev/packages/dart_openai) for connecting and integrating OpenAI Art-Of-State models such as GPT and Dall-E directly inside your Dart/Flutter application.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package comes with prebuilt widgets, and Flutter components that can be used directly inside your app to make the process even easier and faster to fit for your needs.
 
-## Features
+#### Note:
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Before diving into the usage of this package, please, give a quick look over [dart_openai](https://www.pub.dev/packages/dart_openai) and see what it offers and how it works.
 
-## Getting started
+# Usage
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Authentication
 
-## Usage
+### API key
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+The OpenAI API uses API keys for authentication. you can get your account APU key by visiting [API keys](https://platform.openai.com/account/api-keys) in your account.
+
+We highly recommend loading your secret key at runtime from a `.env` file, you can use the [dotenv](https://pub.dev/packages/dotenv) package for Dart applications or [flutter_dotenv](https://pub.dev/packages/flutter_dotenv) for Flutter's.
 
 ```dart
-const like = 'sample';
+void main() {
+ DotEnv env = DotEnv()..load([".env"]); // Loads our .env file.
+ OpenAI.apiKey = env['OPEN_AI_API_KEY']; // Initialize the package with that API key
+
+ runApp(const MyApp());
+}
 ```
 
-## Additional information
+### Setting an organization
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+if you belong to a specific organization, you can pass its id to `OpenAI.organization` like this:
+
+```dart
+ OpenAI.organization = "ORGANIZATION ID";
+```
+
+If you don't belong actually to any organization, you can just ignore it, or set it to `null`.
+
+[Learn More From Here.](https://platform.openai.com/docs/api-reference/authentication)
+
+</br>

@@ -1,3 +1,6 @@
-## 0.0.1
+## 0.2.0
 
-* TODO: Describe initial release.
+- Added Models Builder Widget.
+- Added one Model Builder Widget.
+- Added Completion Builder Widget.
+- Added Streamed Completed Builder Widget.

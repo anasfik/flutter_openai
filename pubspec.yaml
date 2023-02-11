@@ -1,6 +1,6 @@
 name: flutter_openai
 description: A new Flutter package project.
-version: 0.0.1
+version: 0.2.0
 
 environment:
   sdk: ">=2.19.0 <3.0.0"
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  dart_openai: ^1.2.3
+  dart_openai: ^1.4.0
   meta: ^1.8.0
 
 dev_dependencies:
