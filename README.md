@@ -45,18 +45,19 @@ If you don't belong actually to any organization, you can just ignore it, or set
 
 ## Widgets Progress
 
-[x] OpenAI Models Builder Widget.
-[x] OpenAI Model Builder Widget.
-[x] OpenAI Completion Builder Widget.
-[x] OpenAI Streamed Completion Builder Widget.
-[X] OpenAI Edit Builder Widget.
-[ ] OpenAI Image Generator Widget.
-[ ] OpenAI Image Edit Widget.
-[ ] OpenAI Image Variation Widget.
-[x] OpenAI Embeddings Builder Widget.
-[ ] OpenAI File Uploader Widget.
-[ ] OpenAI Files Builder Widget.
-[ ] OpenAI Fine-Tune Creator Widget.
-[ ] OpenAI Fine-tunes Builder Widget.
-[ ] OpenAI Fine-Tune Streamed Events Builder Widget.
-[x] OpenAI Moderation Builder Widget.
+-
+- [x] OpenAI Models Builder Widget.
+- [x] OpenAI Model Builder Widget.
+- [x] OpenAI Completion Builder Widget.
+- [x] OpenAI Streamed Completion Builder Widget.
+- [x] OpenAI Edit Builder Widget.
+- [ ] OpenAI Image Generator Widget.
+- [ ] OpenAI Image Edit Widget.
+- [ ] OpenAI Image Variation Widget.
+- [x] OpenAI Embeddings Builder Widget.
+- [ ] OpenAI File Uploader Widget.
+- [ ] OpenAI Files Builder Widget.
+- [ ] OpenAI Fine-Tune Creator Widget.
+- [ ] OpenAI Fine-tunes Builder Widget.
+- [ ] OpenAI Fine-Tune Streamed Events Builder Widget.
+- [x] OpenAI Moderation Builder Widget.
