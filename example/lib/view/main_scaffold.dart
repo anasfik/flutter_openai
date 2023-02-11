@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../examples/completion_builder.dart';
 import '../examples/edit_builder.dart';
+import '../examples/embedding_builder.dart';
 import '../examples/model_builder.dart';
 import '../examples/models_builder.dart';
 import '../examples/streamed_completion_builder.dart';
@@ -37,7 +38,11 @@ class _MainScaffoldState extends State<MainScaffold> {
     const ScreenEntity(
       screen: EditBuilderExample(),
       title: 'Edit Builder Widget',
-    )
+    ),
+    const ScreenEntity(
+      screen: EmbeddingsBuilderExample(),
+      title: 'Embeddings Builder Widget',
+    ),
   ];
 
   @override
