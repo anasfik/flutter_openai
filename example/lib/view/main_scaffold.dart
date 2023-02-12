@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../examples/completion_builder.dart';
 import '../examples/edit_builder.dart';
 import '../examples/embedding_builder.dart';
+import '../examples/image_edit_builder.dart';
+import '../examples/image_generatopn_builder.dart';
+import '../examples/image_variation_builder.dart';
 import '../examples/model_builder.dart';
 import '../examples/models_builder.dart';
 import '../examples/moderation_builder.dart';
@@ -47,6 +50,18 @@ class _MainScaffoldState extends State<MainScaffold> {
     const ScreenEntity(
       screen: ModerationBuilderExample(),
       title: 'Moderation Builder Widget',
+    ),
+    const ScreenEntity(
+      screen: ImageGenerationBuilderExample(),
+      title: 'Image Generation Builder Widget',
+    ),
+    const ScreenEntity(
+      screen: ImageEditBuilderExample(),
+      title: 'Image Edit Builder Widget',
+    ),
+    const ScreenEntity(
+      screen: ImageVariationBuilderExample(),
+      title: 'Image Variation Builder Widget',
     ),
   ];
 
