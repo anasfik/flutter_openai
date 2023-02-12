@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_openai/flutter_openai.dart';
 
-class OpenAIImageGenerator extends StatefulWidget {
-  const OpenAIImageGenerator({
+class OpenAIImageGenerationBuilder extends StatefulWidget {
+  const OpenAIImageGenerationBuilder({
     super.key,
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
@@ -35,10 +35,10 @@ class OpenAIImageGenerator extends StatefulWidget {
   final bool shouldRebuildOnConfigChanged;
 
   @override
-  State<OpenAIImageGenerator> createState() => _OpenAIImageGeneratorState();
+  State<OpenAIImageGenerationBuilder> createState() => _OpenAIImageGenerationBuilderState();
 }
 
-class _OpenAIImageGeneratorState extends State<OpenAIImageGenerator> {
+class _OpenAIImageGenerationBuilderState extends State<OpenAIImageGenerationBuilder> {
   late Future<OpenAIImageModel> future;
 
   @override
@@ -54,7 +54,7 @@ class _OpenAIImageGeneratorState extends State<OpenAIImageGenerator> {
   }
 
   @override
-  void didUpdateWidget(covariant OpenAIImageGenerator oldWidget) {
+  void didUpdateWidget(covariant OpenAIImageGenerationBuilder oldWidget) {
     if (oldWidget.prompt != widget.prompt ||
         oldWidget.n != widget.n ||
         oldWidget.responseFormat != widget.responseFormat ||
