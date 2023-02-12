@@ -35,10 +35,12 @@ class OpenAIImageGenerationBuilder extends StatefulWidget {
   final bool shouldRebuildOnConfigChanged;
 
   @override
-  State<OpenAIImageGenerationBuilder> createState() => _OpenAIImageGenerationBuilderState();
+  State<OpenAIImageGenerationBuilder> createState() =>
+      _OpenAIImageGenerationBuilderState();
 }
 
-class _OpenAIImageGenerationBuilderState extends State<OpenAIImageGenerationBuilder> {
+class _OpenAIImageGenerationBuilderState
+    extends State<OpenAIImageGenerationBuilder> {
   late Future<OpenAIImageModel> future;
 
   @override

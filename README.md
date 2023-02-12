@@ -51,9 +51,9 @@ If you don't belong actually to any organization, you can just ignore it, or set
 - [x] OpenAI Completion Builder Widget.
 - [x] OpenAI Streamed Completion Builder Widget.
 - [x] OpenAI Edit Builder Widget.
-- [ ] OpenAI Image Generator Widget.
-- [ ] OpenAI Image Edit Widget.
-- [ ] OpenAI Image Variation Widget.
+- [x] OpenAI Image Generator Widget.
+- [x] OpenAI Image Edit Widget.
+- [x] OpenAI Image Variation Widget.
 - [x] OpenAI Embeddings Builder Widget.
 - [ ] OpenAI File Uploader Widget.
 - [ ] OpenAI Files Builder Widget.

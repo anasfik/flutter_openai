@@ -73,6 +73,7 @@ class _OpenAIImageVariationBuilderState
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<OpenAIImageVariationModel>(
+      future: future,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return widget.onErrorBuilder(context, snapshot.error!);

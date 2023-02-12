@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_openai/flutter_openai.dart';
 
-class OPenAIImageEditBuilder extends StatefulWidget {
-  const OPenAIImageEditBuilder({
+class OpenAIImageEditBuilder extends StatefulWidget {
+  const OpenAIImageEditBuilder({
     super.key,
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
@@ -43,10 +43,10 @@ class OPenAIImageEditBuilder extends StatefulWidget {
   final bool shouldRebuildOnConfigChanged;
 
   @override
-  State<OPenAIImageEditBuilder> createState() => _OPenAIImageEditBuilderState();
+  State<OpenAIImageEditBuilder> createState() => _OpenAIImageEditBuilderState();
 }
 
-class _OPenAIImageEditBuilderState extends State<OPenAIImageEditBuilder> {
+class _OpenAIImageEditBuilderState extends State<OpenAIImageEditBuilder> {
   late Future<OpenAiImageEditModel> future;
 
   @override
@@ -64,7 +64,7 @@ class _OPenAIImageEditBuilderState extends State<OPenAIImageEditBuilder> {
   }
 
   @override
-  void didUpdateWidget(covariant OPenAIImageEditBuilder oldWidget) {
+  void didUpdateWidget(covariant OpenAIImageEditBuilder oldWidget) {
     if (oldWidget.prompt != widget.prompt ||
         oldWidget.mask != widget.mask ||
         oldWidget.image != widget.image ||
