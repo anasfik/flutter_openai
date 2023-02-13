@@ -61,3 +61,77 @@ If you don't belong actually to any organization, you can just ignore it, or set
 - [ ] OpenAI Fine-tunes Builder Widget.
 - [ ] OpenAI Fine-Tune Streamed Events Builder Widget.
 - [x] OpenAI Moderation Builder Widget.
+
+## Why this exists ?
+
+The widget provided by this package is a combination between Flutter's `FutureBuilder` and `StreamBuilder` widgets and the [dart_openai](https://pub.dev/packages/dart_openai) which provides easy-to-use methods that connect directly to OpenAI APIs.
+
+However, in order to get more control over the calls and billed requests to OpenAI end.
+
+While developing/debugging your application as an example, you don't want to make a new billed request every time you hit a hot reload or by calling a `setState(() {}`)`, right?
+
+Well, all widgets of this package have a `shouldRebuildOnStateUpdates` property, which you can be toggled in order to allow/prevent the widget updates because of some external effect, taking this example of the `OpenAIStreamedCompletionBuilder` widget:
+
+```dart
+ OpenAIStreamedCompletionBuilder(
+   model: "text-davinci-003",
+   prompt: "Flutter is ",
+   shouldRebuildOnStateUpdates: false,
+   // ...
+ ),
+```
+
+Now, by putting this widget anywhere in your flutter project, calling `setState(() {})` and hot-reload will not update the widget, which will not make a new billed request on the OpenAI end until you allow this behavior to happen by setting it to `true`, like this:
+
+```dart
+ OpenAIStreamedCompletionBuilder(
+   model: "text-davinci-003",
+   prompt: "Flutter is ",
+   shouldRebuildOnStateUpdates: true, // switched this to true
+   // ...
+```
+
+### OpenAI Models Builder Widget.
+
+This widget gets you a list of the available models offered by OpenAI and your fine-tuned ones:
+
+```dart
+OpenAIModelsBuilder(
+  onSuccessBuilder: (BuildContext context, List<OpenAIModelModel> models) {
+    return Text("$models");
+  },
+  onLoadingBuilder: (BuildContext context) {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  },
+  onErrorBuilder: (BuildContext context, Object err) {
+    return Center(
+      child: Text("$err"),
+    );
+  },
+),
+```
+
+## OpenAI Model Builder Widget.
+
+This widget gets you a data about a single model by it's id.
+
+```dart
+OpenAIModelBuilder(
+  modelId: "text-davinci-003",
+  onSuccessBuilder: (BuildContext context, OpenAIModelModel model) {
+    return Text("$model");
+  },
+  onLoadingBuilder: (context) {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  },
+  onErrorBuilder: (context, err) {
+    return Center(
+      child: Text("$err"),
+    );
+  },
+),
+```

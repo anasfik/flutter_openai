@@ -8,36 +8,8 @@ class OpenAIModelBuilderExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return OpenAIModelBuilder(
       modelId: "text-davinci-003",
-      onSuccessBuilder: (context, model) {
-        // widget that shows the model
-        return Center(
-          child: Container(
-            width: 300,
-            height: 300,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      const Text("id: "),
-                      Text(model.id),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      const Text("Owned By: "),
-                      Text(model.ownedBy),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+      onSuccessBuilder: (BuildContext context, OpenAIModelModel model) {
+        return Text("$model");
       },
       onLoadingBuilder: (context) {
         return const Center(
@@ -46,7 +18,7 @@ class OpenAIModelBuilderExample extends StatelessWidget {
       },
       onErrorBuilder: (context, err) {
         return Center(
-          child: Text(err.toString()),
+          child: Text("$err"),
         );
       },
     );

@@ -23,7 +23,12 @@ class OpenAIModelsBuilder extends StatefulWidget {
 }
 
 class _OpenAIModelsBuilderState extends State<OpenAIModelsBuilder> {
-  late Future<List<OpenAIModelModel>> future = OpenAI.instance.model.list();
+  late Future<List<OpenAIModelModel>> future;
+  @override
+  void initState() {
+    future = OpenAI.instance.model.list();
+    super.initState();
+  }
 
   @override
   void didUpdateWidget(covariant OpenAIModelsBuilder oldWidget) {
@@ -47,10 +52,8 @@ class _OpenAIModelsBuilderState extends State<OpenAIModelsBuilder> {
           return widget.onSuccessBuilder(context, modelsSnapshot.data!);
         } else if (modelsSnapshot.hasError) {
           return widget.onErrorBuilder(context, modelsSnapshot.error!);
-        } else if (modelsSnapshot.connectionState == ConnectionState.waiting) {
-          return widget.onLoadingBuilder(context);
         } else {
-          return const SizedBox.shrink();
+          return widget.onLoadingBuilder(context);
         }
       },
     );

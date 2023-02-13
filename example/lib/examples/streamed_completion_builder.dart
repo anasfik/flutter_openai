@@ -22,7 +22,7 @@ class _StreamedCompletionBuilderExampleState
 
   @override
   Widget build(BuildContext context) {
-    final shouldRebuild = true;
+    final shouldRebuild = false;
 
     return Column(
       children: <Widget>[
@@ -56,7 +56,6 @@ class _StreamedCompletionBuilderExampleState
             BuildContext context,
             OpenAIStreamCompletionModel model,
           ) {
-            print(model.choices.first.text);
             result += model.choices.first.text;
             return Text(result);
           },
