@@ -9,14 +9,14 @@ class OpenAIModelsBuilder extends StatefulWidget {
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
     required this.onLoadingBuilder,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final Widget Function(BuildContext context, List<OpenAIModelModel> models)
       onSuccessBuilder;
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
 
   @override
   State<OpenAIModelsBuilder> createState() => _OpenAIModelsBuilderState();
@@ -27,7 +27,7 @@ class _OpenAIModelsBuilderState extends State<OpenAIModelsBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIModelsBuilder oldWidget) {
-    if (widget.shouldRebuildOnConfigChanged) {
+    if (widget.shouldRebuildOnStateUpdates) {
       setState(() {
         future = OpenAI.instance.model.list();
       });

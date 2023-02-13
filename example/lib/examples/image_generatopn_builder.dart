@@ -12,7 +12,7 @@ class ImageGenerationBuilderExample extends StatelessWidget {
       n: 4,
       size: OpenAIImageSize.size256,
       responseFormat: OpenAIResponseFormat.url,
-      shouldRebuildOnConfigChanged: false,
+      shouldRebuildOnStateUpdates: false,
       onSuccessBuilder: (context, snapshot) {
         return ListView.separated(
           separatorBuilder: (context, index) {

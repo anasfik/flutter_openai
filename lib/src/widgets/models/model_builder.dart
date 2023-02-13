@@ -10,7 +10,7 @@ class OpenAIModelBuilder extends StatefulWidget {
     required this.onErrorBuilder,
     required this.onLoadingBuilder,
     required this.modelId,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final Widget Function(BuildContext context, OpenAIModelModel model)
@@ -18,7 +18,7 @@ class OpenAIModelBuilder extends StatefulWidget {
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
   final String modelId;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
 
   @override
   State<OpenAIModelBuilder> createState() => _OpenAIModelBuilderState();
@@ -35,13 +35,11 @@ class _OpenAIModelBuilderState extends State<OpenAIModelBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIModelBuilder oldWidget) {
- 
-      if (widget.shouldRebuildOnConfigChanged) {
-        setState(() {
-          future = OpenAI.instance.model.retrieve(widget.modelId);
-        });
-      }
-    
+    if (widget.shouldRebuildOnStateUpdates) {
+      setState(() {
+        future = OpenAI.instance.model.retrieve(widget.modelId);
+      });
+    }
 
     super.didUpdateWidget(oldWidget);
   }
@@ -50,7 +48,7 @@ class _OpenAIModelBuilderState extends State<OpenAIModelBuilder> {
   Widget build(BuildContext context) {
     return CustomFutureBuilder<OpenAIModelModel>(
       future: future,
-      shouldRebuildOnConfigChanged: widget.shouldRebuildOnConfigChanged,
+      shouldRebuildOnStateUpdates: widget.shouldRebuildOnStateUpdates,
       builder: (
         BuildContext context,
         AsyncSnapshot<OpenAIModelModel> modelSnapshot,

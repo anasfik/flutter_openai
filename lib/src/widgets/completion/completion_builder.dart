@@ -8,7 +8,7 @@ class OpenAICompletionBuilder extends StatefulWidget {
     super.key,
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
     required this.onLoadingBuilder,
     required this.model,
     this.prompt,
@@ -31,7 +31,7 @@ class OpenAICompletionBuilder extends StatefulWidget {
       onSuccessBuilder;
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
   final String model;
   final String? prompt;
   final int? maxTokens;
@@ -80,7 +80,7 @@ class _OpenAICompletionBuilderState extends State<OpenAICompletionBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAICompletionBuilder oldWidget) {
-    if (widget.shouldRebuildOnConfigChanged) {
+    if (widget.shouldRebuildOnStateUpdates) {
       setState(() {
         future = OpenAI.instance.completion.create(
           prompt: widget.prompt,
@@ -111,7 +111,7 @@ class _OpenAICompletionBuilderState extends State<OpenAICompletionBuilder> {
   Widget build(BuildContext context) {
     return CustomFutureBuilder<OpenAICompletionModel>(
       future: future,
-      shouldRebuildOnConfigChanged: widget.shouldRebuildOnConfigChanged,
+      shouldRebuildOnStateUpdates: widget.shouldRebuildOnStateUpdates,
       builder: (
         BuildContext context,
         AsyncSnapshot<OpenAICompletionModel> modelSnapshot,

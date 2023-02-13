@@ -51,7 +51,7 @@ class _StreamedCompletionBuilderExampleState
           model: "text-davinci-003",
           prompt: _controller.text,
           maxTokens: 100,
-          shouldRebuildOnConfigChanged: shouldRebuild,
+          shouldRebuildOnStateUpdates: shouldRebuild,
           onSuccessBuilder: (
             BuildContext context,
             OpenAIStreamCompletionModel model,

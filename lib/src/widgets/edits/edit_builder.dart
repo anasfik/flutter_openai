@@ -13,7 +13,7 @@ class OpenAIEditBuilder extends StatefulWidget {
     this.topP,
     this.input,
     this.n,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final Widget Function(BuildContext context, OpenAIEditModel model)
@@ -26,7 +26,7 @@ class OpenAIEditBuilder extends StatefulWidget {
   final double? topP;
   final String? input;
   final int? n;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
 
   @override
   State<OpenAIEditBuilder> createState() => _OpenAIEditBuilderState();
@@ -50,20 +50,19 @@ class _OpenAIEditBuilderState extends State<OpenAIEditBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIEditBuilder oldWidget) {
+    if (widget.shouldRebuildOnStateUpdates) {
+      setState(() {
+        future = OpenAI.instance.edit.create(
+          instruction: widget.instruction,
+          model: widget.model,
+          temperature: widget.temperature,
+          topP: widget.topP,
+          input: widget.input,
+          n: widget.n,
+        );
+      });
+    }
 
-      if (widget.shouldRebuildOnConfigChanged) {
-        setState(() {
-          future = OpenAI.instance.edit.create(
-            instruction: widget.instruction,
-            model: widget.model,
-            temperature: widget.temperature,
-            topP: widget.topP,
-            input: widget.input,
-            n: widget.n,
-          );
-        });
-      }
-    
     super.didUpdateWidget(oldWidget);
   }
 

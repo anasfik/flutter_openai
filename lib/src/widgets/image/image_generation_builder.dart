@@ -12,7 +12,7 @@ class OpenAIImageGenerationBuilder extends StatefulWidget {
     this.responseFormat,
     this.size,
     this.user,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final String prompt;
@@ -32,7 +32,7 @@ class OpenAIImageGenerationBuilder extends StatefulWidget {
 
   final Widget Function(BuildContext context) onLoadingBuilder;
 
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
 
   @override
   State<OpenAIImageGenerationBuilder> createState() =>
@@ -57,7 +57,7 @@ class _OpenAIImageGenerationBuilderState
 
   @override
   void didUpdateWidget(covariant OpenAIImageGenerationBuilder oldWidget) {
-    if (widget.shouldRebuildOnConfigChanged) {
+    if (widget.shouldRebuildOnStateUpdates) {
       setState(() {
         future = OpenAI.instance.image.create(
           prompt: widget.prompt,

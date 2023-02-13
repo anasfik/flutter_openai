@@ -14,7 +14,7 @@ class OpenAIImageVariationBuilder extends StatefulWidget {
     this.responseFormat,
     this.size,
     this.user,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final File image;
@@ -27,7 +27,7 @@ class OpenAIImageVariationBuilder extends StatefulWidget {
       onSuccessBuilder;
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
 
   @override
   State<OpenAIImageVariationBuilder> createState() =>
@@ -52,16 +52,14 @@ class _OpenAIImageVariationBuilderState
 
   @override
   void didUpdateWidget(covariant OpenAIImageVariationBuilder oldWidget) {
-
-      if (widget.shouldRebuildOnConfigChanged) {
-        future = OpenAI.instance.image.variation(
-          image: widget.image,
-          n: widget.n,
-          responseFormat: widget.responseFormat,
-          size: widget.size,
-          user: widget.user,
-        );
-      
+    if (widget.shouldRebuildOnStateUpdates) {
+      future = OpenAI.instance.image.variation(
+        image: widget.image,
+        n: widget.n,
+        responseFormat: widget.responseFormat,
+        size: widget.size,
+        user: widget.user,
+      );
     }
     super.didUpdateWidget(oldWidget);
   }

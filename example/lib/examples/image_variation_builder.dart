@@ -32,7 +32,7 @@ class _ImageVariationBuilderExampleState
             n: 1,
             size: OpenAIImageSize.size256,
             responseFormat: OpenAIResponseFormat.url,
-            shouldRebuildOnConfigChanged: true,
+            shouldRebuildOnStateUpdates: true,
             onSuccessBuilder: (context, snapshot) {
               return ListView.separated(
                 separatorBuilder: (context, index) {

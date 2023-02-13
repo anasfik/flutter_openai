@@ -16,7 +16,7 @@ class OpenAIImageEditBuilder extends StatefulWidget {
     this.responseFormat,
     this.size,
     this.user,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final String prompt;
@@ -40,7 +40,7 @@ class OpenAIImageEditBuilder extends StatefulWidget {
 
   final Widget Function(BuildContext context) onLoadingBuilder;
 
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
 
   @override
   State<OpenAIImageEditBuilder> createState() => _OpenAIImageEditBuilderState();
@@ -65,20 +65,18 @@ class _OpenAIImageEditBuilderState extends State<OpenAIImageEditBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIImageEditBuilder oldWidget) {
-   
-      if (widget.shouldRebuildOnConfigChanged) {
-        setState(() {
-          future = OpenAI.instance.image.edit(
-            prompt: widget.prompt,
-            mask: widget.mask,
-            image: widget.image,
-            n: widget.n,
-            responseFormat: widget.responseFormat,
-            size: widget.size,
-            user: widget.user,
-          );
-        });
-      
+    if (widget.shouldRebuildOnStateUpdates) {
+      setState(() {
+        future = OpenAI.instance.image.edit(
+          prompt: widget.prompt,
+          mask: widget.mask,
+          image: widget.image,
+          n: widget.n,
+          responseFormat: widget.responseFormat,
+          size: widget.size,
+          user: widget.user,
+        );
+      });
     }
     super.didUpdateWidget(oldWidget);
   }

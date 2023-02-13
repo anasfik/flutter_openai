@@ -6,7 +6,7 @@ class OpenAIStreamedCompletionBuilder extends StatefulWidget {
     super.key,
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
     required this.onLoadingBuilder,
     required this.model,
     this.prompt,
@@ -29,7 +29,7 @@ class OpenAIStreamedCompletionBuilder extends StatefulWidget {
       onSuccessBuilder;
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
   final String model;
   final String? prompt;
   final int? maxTokens;
@@ -80,7 +80,7 @@ class _OpenAIStreamedCompletionBuilderState
 
   @override
   void didUpdateWidget(covariant OpenAIStreamedCompletionBuilder oldWidget) {
-    if (widget.shouldRebuildOnConfigChanged) {
+    if (widget.shouldRebuildOnStateUpdates) {
       setState(() {
         stream = OpenAI.instance.completion.createStream(
           prompt: widget.prompt,

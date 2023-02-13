@@ -9,14 +9,14 @@ class OpenAIModerationBuilder extends StatefulWidget {
     required this.onErrorBuilder,
     required this.onLoadingBuilder,
     this.model,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final Widget Function(BuildContext context, OpenAIModerationModel model)
       onSuccessBuilder;
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
   final String input;
   final String? model;
   @override
@@ -38,7 +38,7 @@ class _OpenAIModerationBuilderState extends State<OpenAIModerationBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIModerationBuilder oldWidget) {
-    if (widget.shouldRebuildOnConfigChanged) {
+    if (widget.shouldRebuildOnStateUpdates) {
       future = OpenAI.instance.moderation.create(
         input: widget.input,
         model: widget.model,

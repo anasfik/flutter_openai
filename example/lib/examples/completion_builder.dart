@@ -16,7 +16,7 @@ class _CompletionBuilderExampleState extends State<CompletionBuilderExample> {
   void initState() {
     _controller = TextEditingController(text: "OpenAI is ");
     super.initState();
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _CompletionBuilderExampleState extends State<CompletionBuilderExample> {
           child: OpenAICompletionBuilder(
             model: "text-davinci-003",
             prompt: _controller.text,
-            shouldRebuildOnConfigChanged: true,
+            shouldRebuildOnStateUpdates: true,
             maxTokens: 50,
             temperature: 0.5,
             onSuccessBuilder:

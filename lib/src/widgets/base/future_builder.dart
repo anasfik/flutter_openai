@@ -6,13 +6,13 @@ class CustomFutureBuilder<T> extends StatefulWidget {
     required this.future,
     required this.builder,
     this.initialData,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
   });
 
   final Future<T> future;
   final AsyncWidgetBuilder<T> builder;
   final T? initialData;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
 
   @override
   State<CustomFutureBuilder> createState() => _CustomFutureBuilderState<T>();
@@ -28,7 +28,7 @@ class _CustomFutureBuilderState<T> extends State<CustomFutureBuilder<T>> {
 
   @override
   void didUpdateWidget(covariant CustomFutureBuilder<T> oldWidget) {
-    if (widget.shouldRebuildOnConfigChanged) {
+    if (widget.shouldRebuildOnStateUpdates) {
       future = widget.future;
     }
 

@@ -7,7 +7,7 @@ class OpenAIEmbeddingBuilder extends StatefulWidget {
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
     required this.onLoadingBuilder,
-    this.shouldRebuildOnConfigChanged = false,
+    this.shouldRebuildOnStateUpdates = false,
     required this.input,
     required this.model,
     this.user,
@@ -17,7 +17,7 @@ class OpenAIEmbeddingBuilder extends StatefulWidget {
       onSuccessBuilder;
   final Widget Function(BuildContext context, Object error) onErrorBuilder;
   final Widget Function(BuildContext context) onLoadingBuilder;
-  final bool shouldRebuildOnConfigChanged;
+  final bool shouldRebuildOnStateUpdates;
   final String model;
   final String input;
   final String? user;
@@ -41,16 +41,14 @@ class _OpenAIEmbeddingBuilderState extends State<OpenAIEmbeddingBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIEmbeddingBuilder oldWidget) {
- 
-      if (widget.shouldRebuildOnConfigChanged) {
-        setState(() {
-          future = OpenAI.instance.embedding.create(
-            input: widget.input,
-            model: widget.model,
-            user: widget.user,
-          );
-        });
-      
+    if (widget.shouldRebuildOnStateUpdates) {
+      setState(() {
+        future = OpenAI.instance.embedding.create(
+          input: widget.input,
+          model: widget.model,
+          user: widget.user,
+        );
+      });
     }
     super.didUpdateWidget(oldWidget);
   }
