@@ -57,23 +57,18 @@ class _OpenAIImageGenerationBuilderState
 
   @override
   void didUpdateWidget(covariant OpenAIImageGenerationBuilder oldWidget) {
-    if (oldWidget.prompt != widget.prompt ||
-        oldWidget.n != widget.n ||
-        oldWidget.responseFormat != widget.responseFormat ||
-        oldWidget.size != widget.size ||
-        oldWidget.user != widget.user) {
-      if (widget.shouldRebuildOnConfigChanged) {
-        setState(() {
-          future = OpenAI.instance.image.create(
-            prompt: widget.prompt,
-            n: widget.n,
-            responseFormat: widget.responseFormat,
-            size: widget.size,
-            user: widget.user,
-          );
-        });
-      }
+    if (widget.shouldRebuildOnConfigChanged) {
+      setState(() {
+        future = OpenAI.instance.image.create(
+          prompt: widget.prompt,
+          n: widget.n,
+          responseFormat: widget.responseFormat,
+          size: widget.size,
+          user: widget.user,
+        );
+      });
     }
+
     super.didUpdateWidget(oldWidget);
   }
 

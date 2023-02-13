@@ -35,13 +35,13 @@ class _OpenAIModelBuilderState extends State<OpenAIModelBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIModelBuilder oldWidget) {
-    if (widget.modelId != oldWidget.modelId) {
+ 
       if (widget.shouldRebuildOnConfigChanged) {
         setState(() {
           future = OpenAI.instance.model.retrieve(widget.modelId);
         });
       }
-    }
+    
 
     super.didUpdateWidget(oldWidget);
   }

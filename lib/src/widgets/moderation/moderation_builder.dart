@@ -38,13 +38,11 @@ class _OpenAIModerationBuilderState extends State<OpenAIModerationBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIModerationBuilder oldWidget) {
-    if (widget.input != oldWidget.input || widget.model != oldWidget.model) {
-      if (widget.shouldRebuildOnConfigChanged) {
-        future = OpenAI.instance.moderation.create(
-          input: widget.input,
-          model: widget.model,
-        );
-      }
+    if (widget.shouldRebuildOnConfigChanged) {
+      future = OpenAI.instance.moderation.create(
+        input: widget.input,
+        model: widget.model,
+      );
     }
     super.didUpdateWidget(oldWidget);
   }

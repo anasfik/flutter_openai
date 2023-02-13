@@ -96,6 +96,7 @@ class _MainScaffoldState extends State<MainScaffold> {
         toolbarHeight: 90,
         centerTitle: true,
         title: Text(current.title),
+        foregroundColor: Colors.white,
       ),
       body: Center(child: current.screen),
     );

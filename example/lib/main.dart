@@ -2,9 +2,7 @@ import 'package:example/view/main_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_openai/flutter_openai.dart';
-
-import 'examples/models_builder.dart';
-import 'models/screen_entity.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -40,4 +38,6 @@ final ThemeData theme = ThemeData.light().copyWith(
     backgroundColor: Colors.black87,
     elevation: 0,
   ),
+  textTheme: GoogleFonts.latoTextTheme(),
+  useMaterial3: true,
 );

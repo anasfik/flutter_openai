@@ -52,11 +52,7 @@ class _OpenAIImageVariationBuilderState
 
   @override
   void didUpdateWidget(covariant OpenAIImageVariationBuilder oldWidget) {
-    if (oldWidget.image != widget.image ||
-        oldWidget.n != widget.n ||
-        oldWidget.responseFormat != widget.responseFormat ||
-        oldWidget.size != widget.size ||
-        oldWidget.user != widget.user) {
+
       if (widget.shouldRebuildOnConfigChanged) {
         future = OpenAI.instance.image.variation(
           image: widget.image,
@@ -65,7 +61,7 @@ class _OpenAIImageVariationBuilderState
           size: widget.size,
           user: widget.user,
         );
-      }
+      
     }
     super.didUpdateWidget(oldWidget);
   }

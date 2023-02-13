@@ -33,7 +33,6 @@ class OpenAICompletionBuilder extends StatefulWidget {
   final Widget Function(BuildContext context) onLoadingBuilder;
   final bool shouldRebuildOnConfigChanged;
   final String model;
-
   final String? prompt;
   final int? maxTokens;
   final double? temperature;
@@ -70,8 +69,7 @@ class _OpenAICompletionBuilderState extends State<OpenAICompletionBuilder> {
       presencePenalty: widget.presencePenalty,
       frequencyPenalty: widget.frequencyPenalty,
       logprobs: widget.logprobs,
-      // TODO: fix echo in dart_openai.
-      // echo: echo,
+      echo: widget.echo,
       logitBias: widget.logitBias,
       suffix: widget.suffix,
       topP: widget.topP,
@@ -82,45 +80,29 @@ class _OpenAICompletionBuilderState extends State<OpenAICompletionBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAICompletionBuilder oldWidget) {
-    if (widget.model != oldWidget.model ||
-        widget.prompt != oldWidget.prompt ||
-        widget.maxTokens != oldWidget.maxTokens ||
-        widget.temperature != oldWidget.temperature ||
-        widget.bestOf != oldWidget.bestOf ||
-        widget.n != oldWidget.n ||
-        widget.stop != oldWidget.stop ||
-        widget.presencePenalty != oldWidget.presencePenalty ||
-        widget.frequencyPenalty != oldWidget.frequencyPenalty ||
-        widget.logprobs != oldWidget.logprobs ||
-        widget.echo != oldWidget.echo ||
-        widget.logitBias != oldWidget.logitBias ||
-        widget.suffix != oldWidget.suffix ||
-        widget.topP != oldWidget.topP ||
-        widget.user != oldWidget.user) {
-      if (widget.shouldRebuildOnConfigChanged) {
-        setState(() {
-          future = OpenAI.instance.completion.create(
-            prompt: widget.prompt,
-            maxTokens: widget.maxTokens,
-            temperature: widget.temperature,
-            model: widget.model,
-            bestOf: widget.bestOf,
-            n: widget.n,
-            stop: widget.stop,
-            presencePenalty: widget.presencePenalty,
-            frequencyPenalty: widget.frequencyPenalty,
-            logprobs: widget.logprobs,
-            // TODO: fix echo in dart_openai.
-            // echo: echo,
-            logitBias: widget.logitBias,
-            suffix: widget.suffix,
-            topP: widget.topP,
-            user: widget.user,
-          );
-        });
+    if (widget.shouldRebuildOnConfigChanged) {
+      setState(() {
+        future = OpenAI.instance.completion.create(
+          prompt: widget.prompt,
+          maxTokens: widget.maxTokens,
+          temperature: widget.temperature,
+          model: widget.model,
+          bestOf: widget.bestOf,
+          n: widget.n,
+          stop: widget.stop,
+          presencePenalty: widget.presencePenalty,
+          frequencyPenalty: widget.frequencyPenalty,
+          logprobs: widget.logprobs,
+          // TODO: fix echo in dart_openai.
+          // echo: echo,
+          logitBias: widget.logitBias,
+          suffix: widget.suffix,
+          topP: widget.topP,
+          user: widget.user,
+        );
+      });
 
-        return;
-      }
+      return;
     }
     super.didUpdateWidget(oldWidget);
   }

@@ -29,7 +29,7 @@ class ModelsBuilderExample extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  model.permission.first.created.toString(),
+                  model.ownedBy,
                   style: const TextStyle(
                     fontSize: 16,
                   ),

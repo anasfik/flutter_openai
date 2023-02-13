@@ -68,8 +68,7 @@ class _OpenAIStreamedCompletionBuilderState
       presencePenalty: widget.presencePenalty,
       frequencyPenalty: widget.frequencyPenalty,
       logprobs: widget.logprobs,
-      // TODO: fix echo in dart_openai.
-      // echo: widget.echo,
+      echo: widget.echo,
       logitBias: widget.logitBias,
       suffix: widget.suffix,
       topP: widget.topP,
@@ -81,43 +80,26 @@ class _OpenAIStreamedCompletionBuilderState
 
   @override
   void didUpdateWidget(covariant OpenAIStreamedCompletionBuilder oldWidget) {
-    if (oldWidget.prompt != widget.prompt ||
-        oldWidget.model != widget.model ||
-        oldWidget.maxTokens != widget.maxTokens ||
-        oldWidget.temperature != widget.temperature ||
-        oldWidget.bestOf != widget.bestOf ||
-        oldWidget.n != widget.n ||
-        oldWidget.stop != widget.stop ||
-        oldWidget.presencePenalty != widget.presencePenalty ||
-        oldWidget.frequencyPenalty != widget.frequencyPenalty ||
-        oldWidget.logprobs != widget.logprobs ||
-        oldWidget.echo != widget.echo ||
-        oldWidget.logitBias != widget.logitBias ||
-        oldWidget.suffix != widget.suffix ||
-        oldWidget.topP != widget.topP ||
-        oldWidget.user != widget.user) {
-      if (widget.shouldRebuildOnConfigChanged) {
-        setState(() {
-          stream = OpenAI.instance.completion.createStream(
-            prompt: widget.prompt,
-            model: widget.model,
-            maxTokens: widget.maxTokens,
-            temperature: widget.temperature,
-            bestOf: widget.bestOf,
-            n: widget.n,
-            stop: widget.stop,
-            presencePenalty: widget.presencePenalty,
-            frequencyPenalty: widget.frequencyPenalty,
-            logprobs: widget.logprobs,
-            // TODO: fix echo in dart_openai.
-            // echo: widget.echo,
-            logitBias: widget.logitBias,
-            suffix: widget.suffix,
-            topP: widget.topP,
-            user: widget.user,
-          );
-        });
-      }
+    if (widget.shouldRebuildOnConfigChanged) {
+      setState(() {
+        stream = OpenAI.instance.completion.createStream(
+          prompt: widget.prompt,
+          model: widget.model,
+          maxTokens: widget.maxTokens,
+          temperature: widget.temperature,
+          bestOf: widget.bestOf,
+          n: widget.n,
+          stop: widget.stop,
+          presencePenalty: widget.presencePenalty,
+          frequencyPenalty: widget.frequencyPenalty,
+          logprobs: widget.logprobs,
+          echo: widget.echo,
+          logitBias: widget.logitBias,
+          suffix: widget.suffix,
+          topP: widget.topP,
+          user: widget.user,
+        );
+      });
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -132,12 +114,10 @@ class _OpenAIStreamedCompletionBuilderState
       ) {
         if (snapshot.hasError) {
           return widget.onErrorBuilder(context, snapshot.error!);
-        } else if (snapshot.connectionState == ConnectionState.active) {
-          return widget.onSuccessBuilder(context, snapshot.data!);
         } else if (snapshot.connectionState == ConnectionState.waiting) {
           return widget.onLoadingBuilder(context);
         } else {
-          return const SizedBox.shrink();
+          return widget.onSuccessBuilder(context, snapshot.data!);
         }
       },
     );

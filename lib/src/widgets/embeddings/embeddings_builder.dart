@@ -41,9 +41,7 @@ class _OpenAIEmbeddingBuilderState extends State<OpenAIEmbeddingBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIEmbeddingBuilder oldWidget) {
-    if (oldWidget.input != widget.input ||
-        oldWidget.model != widget.model ||
-        oldWidget.user != widget.user) {
+ 
       if (widget.shouldRebuildOnConfigChanged) {
         setState(() {
           future = OpenAI.instance.embedding.create(
@@ -52,7 +50,7 @@ class _OpenAIEmbeddingBuilderState extends State<OpenAIEmbeddingBuilder> {
             user: widget.user,
           );
         });
-      }
+      
     }
     super.didUpdateWidget(oldWidget);
   }

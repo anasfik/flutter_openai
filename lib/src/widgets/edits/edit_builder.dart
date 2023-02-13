@@ -50,12 +50,7 @@ class _OpenAIEditBuilderState extends State<OpenAIEditBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIEditBuilder oldWidget) {
-    if (oldWidget.instruction != widget.instruction ||
-        oldWidget.model != widget.model ||
-        oldWidget.temperature != widget.temperature ||
-        oldWidget.topP != widget.topP ||
-        oldWidget.input != widget.input ||
-        oldWidget.n != widget.n) {
+
       if (widget.shouldRebuildOnConfigChanged) {
         setState(() {
           future = OpenAI.instance.edit.create(
@@ -68,7 +63,7 @@ class _OpenAIEditBuilderState extends State<OpenAIEditBuilder> {
           );
         });
       }
-    }
+    
     super.didUpdateWidget(oldWidget);
   }
 

@@ -65,13 +65,7 @@ class _OpenAIImageEditBuilderState extends State<OpenAIImageEditBuilder> {
 
   @override
   void didUpdateWidget(covariant OpenAIImageEditBuilder oldWidget) {
-    if (oldWidget.prompt != widget.prompt ||
-        oldWidget.mask != widget.mask ||
-        oldWidget.image != widget.image ||
-        oldWidget.n != widget.n ||
-        oldWidget.responseFormat != widget.responseFormat ||
-        oldWidget.size != widget.size ||
-        oldWidget.user != widget.user) {
+   
       if (widget.shouldRebuildOnConfigChanged) {
         setState(() {
           future = OpenAI.instance.image.edit(
@@ -84,7 +78,7 @@ class _OpenAIImageEditBuilderState extends State<OpenAIImageEditBuilder> {
             user: widget.user,
           );
         });
-      }
+      
     }
     super.didUpdateWidget(oldWidget);
   }
