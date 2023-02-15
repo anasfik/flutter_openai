@@ -6,6 +6,12 @@ This is an open-source Flutter package that leverages the use of [dart_openai](h
 
 This package comes with prebuilt widgets, and Flutter components that can be used directly inside your app to make the process even easier and faster to fit for your needs.
 
+
+# Discontinued
+
+This project is considered by me as non-sence and don't worth working on, because I (myself) did forget that This targets the Flutter community of developers which should know the basics of implementing widgets and mechanisms by their own, so it's non-sense ( in my opinion ) to create this package.
+
+
 #### Note:
 
 Before diving into the usage of this package, please, give a quick look over [dart_openai](https://www.pub.dev/packages/dart_openai) and see what it offers and how it works.
